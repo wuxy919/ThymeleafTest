@@ -1,0 +1,10 @@
+server:
+  port: 8181
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    # 关闭Thymeleaf缓存，过程中修改页面不会立即生效，需要重启
+    cache: false
