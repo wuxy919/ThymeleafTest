@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuxy.repository.ClazzRepository">
+
+   <select id="findAll" parameterType="long" resultType="Clazz">
+      select * from classes
+   </select>
+
+   <select id="findById" parameterType="long" resultType="Clazz">
+      select * from classes where id = #{id}
+   </select>
+
+   <insert id="save" parameterType="Clazz">
+      insert into classes(name) values (#{name})
+   </insert>
+
+   <update id="update" parameterType="Clazz">
+      update classes set name = #{name} where id = #{id}
+   </update>
+
+   <delete id="deleteById" parameterType="long">
+      delete from classes where id = #{id}
+   </delete>
+
+</mapper>

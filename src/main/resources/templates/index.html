@@ -9,64 +9,20 @@
     <h1>欢迎回来！</h1>
     <table>
         <tr>
-            <td>序号</td>
-            <td>ID</td>
-            <td>姓名</td>
+            <th>班级编号</th>
+            <th>班级名字</th>
+            <th>操作</th>
         </tr>
-        <tr th:each="user,stat:${list}">
-            <td th:text="${stat.count}"></td>
-            <td th:text="${user.id}"></td>
-            <td th:text="${user.name}"></td>
+        <tr th:each="classes,stat:${list}">
+            <td th:text="${classes.id}"></td>
+            <td th:text="${classes.name}"></td>
+            <td>
+                <a th:href="@{/classes/findById/{id}/(id=${classes.id})}">修改</a>
+                <a th:href="@{/classes/deleteById/{id}/(id=${classes.id})}">删除</a>
+            </td>
         </tr>
     </table>
-
-    <div>
-        <p th:text="${username}"></p>
-        <span th:text="'欢迎回来, '+${username}+'!'"></span><br>
-        <span th:text="|欢迎回来,  ${username}!|"></span>
-    </div>
-
-    <span th:if="${flag == true}" th:text="if判断"></span>
-    <span th:unless="${flag != true}" th:text="unless判断"></span>
-
-    <table>
-        <thead>
-            <th>序号</th>
-            <th>ID</th>
-            <th>姓名</th>
-        </thead>
-        <tbody>
-            <tr th:each="user,stat:${list}" th:style="'background-color:'+@{${stat.odd}?'#F2F3F2'}">
-                <td th:text="${stat.count}"></td>
-                <td th:text="${user.id}"></td>
-                <td th:text="${user.name}"></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div>
-        <input th:value="${age lt 30 ? '年轻人' : '中年人'}"/>
-    </div>
-
-    <div th:switch="${sex}">
-        <p th:case="男">男</p>
-        <p th:case="女">女</p>
-    </div>
-
-    <p th:text="${#request.getAttribute('sex')}"></p>
-    <p th:text="${#session.getAttribute('username')}"></p>
-    <p th:text="${#locale.country}"></p>
-
-    <p th:text="${#dates.format(date, 'yyyy-MM-dd HH:mm:ss')}"></p>
-    <p th:text="${#dates.createNow()}"></p>
-    <p th:text="${#strings.isEmpty(username)}"></p>
-    <p th:text="${#lists.isEmpty(users)}"></p>
-    <p th:text="${#strings.length(username)}"></p>
-
-
-    <div th:style="'background:url('+@{${img}}+');'">
-        <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
-    </div>
+    <a href="/classes/redirect/add">新增班级</a>
 
 </body>
 </html>
